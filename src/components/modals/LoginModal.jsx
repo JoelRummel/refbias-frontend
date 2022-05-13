@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import ModalContext from '../../contexts/ModalContext';
 import useAuthApiRequest from '../../hooks/useApiRequest/useAuthApiRequest';
+import { TextInput } from '../common';
 import { Modal } from './Modal';
 
 const LinkButton = styled.button`
@@ -37,20 +38,14 @@ export const LoginModal = () => {
     return (
         <Modal title="Login" open={openModal === "login"} setClosed={() => setOpenModal("")}>
             <form onSubmit={handleSubmit(submitLogin)}>
-                <p>
-                    <b>Email:</b>{" "}
-                    <input {...register("email", {
-                        required: { value: true, message: "Email is required" },
-                        minLength: { value: 5, message: "Invalid email address" }
-                    })} />
-                </p>
-                <p>
-                    <b>Password:</b>{" "}
-                    <input type="password" {...register("password", {
-                        required: { value: true, message: "Password is required" },
-                        minLength: { value: 6, message: "Invalid password (must be six or more characters)" }
-                    })} />
-                </p>
+                <TextInput label="Email" error={errors.email?.message} registration={register("email", {
+                    required: { value: true, message: "Email is required" },
+                    minLength: { value: 5, message: "Invalid email address" }
+                })} />
+                <TextInput label="Password" type="password" error={errors.password?.message} registration={register("password", {
+                    required: { value: true, message: "Password is required" },
+                    minLength: { value: 6, message: "Invalid password (must be six or more characters)" }
+                })} />
                 <input type="submit" value="Login" disabled={Object.keys(errors).length > 0} />
                 <p>No account yet? <LinkButton onClick={showSignup}>Create one</LinkButton></p>
             </form>
