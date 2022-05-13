@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const ErrorMsg = styled.p`
     color: red;
     font-size: 12px;
-    white-space: pre-wrap;
     margin-top: 2px;
 `;
 
@@ -23,7 +22,7 @@ export const TextInput = ({
             )}
             <input type={type} value={value} onChange={onChange} {...registration} />
             <ErrorMsg>
-                {error}{" "}
+                {error}
             </ErrorMsg>
         </div>
     );

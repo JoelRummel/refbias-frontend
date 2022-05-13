@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import ModalContext from '../../contexts/ModalContext';
@@ -16,18 +16,26 @@ const LinkButton = styled.button`
     font-size: inherit;
 `;
 
+const ErrorMsg = styled.span`
+    color: red;
+`;
+
 export const LoginModal = () => {
+    const [loginError, setLoginError] = useState("");
+
     const {
         register,
         handleSubmit,
         formState: { errors }
     } = useForm();
-    console.log(errors);
+
     const { login } = useAuthApiRequest();
     const { openModal, setOpenModal } = useContext(ModalContext);
 
     const submitLogin = async ({ email, password }) => {
+        setLoginError("");
         const result = await login(email, password);
+        if (result.error) setLoginError(result.error);
         console.log(result);
     };
 
@@ -40,13 +48,16 @@ export const LoginModal = () => {
             <form onSubmit={handleSubmit(submitLogin)}>
                 <TextInput label="Email" error={errors.email?.message} registration={register("email", {
                     required: { value: true, message: "Email is required" },
-                    minLength: { value: 5, message: "Invalid email address" }
+                    minLength: { value: 5, message: "Please enter a valid email address" }
                 })} />
                 <TextInput label="Password" type="password" error={errors.password?.message} registration={register("password", {
                     required: { value: true, message: "Password is required" },
                     minLength: { value: 6, message: "Invalid password (must be six or more characters)" }
                 })} />
-                <input type="submit" value="Login" disabled={Object.keys(errors).length > 0} />
+                <div>
+                    <input type="submit" value="Login" disabled={Object.keys(errors).length > 0} />{" "}
+                    <ErrorMsg>{loginError}</ErrorMsg>
+                </div>
                 <p>No account yet? <LinkButton onClick={showSignup}>Create one</LinkButton></p>
             </form>
         </Modal>

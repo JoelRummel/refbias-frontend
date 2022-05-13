@@ -15,7 +15,7 @@ const request = async (method, endpoint, headers, body) => {
     });
     try {
         const json = await res.json();
-        if (!res.ok) return { error: res.message };
+        if (!res.ok) return { error: json.message };
         return json;
     } catch (e) {
         console.error(e);
