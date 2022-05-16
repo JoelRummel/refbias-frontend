@@ -8,9 +8,14 @@ const useAuthApiRequest = () => {
     const signup = (email, username, password) =>
         post('/auth/signup', { email, username, password });
 
+    const loginWithToken = () => {
+        return post('/auth/loginWithToken');
+    };
+
     return {
         login,
-        signup
+        signup,
+        loginWithToken
     };
 };
 

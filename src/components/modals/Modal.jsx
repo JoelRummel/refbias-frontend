@@ -27,7 +27,7 @@ const Title = styled.h2`
     border-bottom: 1px solid gray;
 `;
 
-export const Modal = ({ open, setClosed, title, children, fullSize = false }) => {
+export const Modal = ({ open, setClosed = () => { }, title, children, fullSize = false }) => {
     const maxWidth = fullSize ? '90%' : '450px';
     return (
         <>

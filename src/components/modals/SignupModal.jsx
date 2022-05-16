@@ -1,9 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import AuthContext from '../../contexts/AuthContext';
 import ModalContext from '../../contexts/ModalContext';
-import UserContext from '../../contexts/UserContext';
 import useAuthApiRequest from '../../hooks/useApiRequest/useAuthApiRequest';
 import { TextInput } from '../common';
 import { Modal } from './Modal';
@@ -22,56 +20,52 @@ const ErrorMsg = styled.span`
     color: red;
 `;
 
-export const LoginModal = () => {
-    const [loginError, setLoginError] = useState("");
+export const SignupModal = () => {
+    const [signupError, setSignupError] = useState("");
 
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors }
     } = useForm();
 
-    const { login } = useAuthApiRequest();
-    const { setUser } = useContext(UserContext);
-    const { setAuthToken } = useContext(AuthContext);
+    const { signup } = useAuthApiRequest();
     const { openModal, setOpenModal } = useContext(ModalContext);
 
-    const submitLogin = async ({ email, password }) => {
-        setLoginError("");
-        const result = await login(email, password);
-        if (result.error) {
-            setLoginError(result.error);
-            return;
-        }
-
-        setOpenModal("");
-        setUser(result.user);
-        setAuthToken(result.token);
-        reset();
+    const submitSignup = async ({ email, username, password }) => {
+        setSignupError("");
+        const result = await signup(email, username, password);
+        if (result.error) setSignupError(result.error);
+        console.log(result);
     };
 
-    const showSignup = () => {
-        setOpenModal("signup");
+    const showLogin = () => {
+        setOpenModal("login");
     };
 
     return (
-        <Modal title="Login" open={openModal === "login"} setClosed={() => setOpenModal("")}>
-            <form onSubmit={handleSubmit(submitLogin)}>
+        <Modal title="Create Account" open={openModal === "signup"} setClosed={() => setOpenModal("")}>
+            <form onSubmit={handleSubmit(submitSignup)}>
                 <TextInput label="Email" error={errors.email?.message} registration={register("email", {
                     required: { value: true, message: "Email is required" },
                     minLength: { value: 5, message: "Please enter a valid email address" }
+                })} />
+                <TextInput label="Username" error={errors.username?.message} registration={register("username", {
+                    required: { value: true, message: "Username is required" },
+                    minLength: { value: 3, message: "Username must be 3-20 characters" },
+                    maxLength: { value: 20, message: "Username must be 3-20 characters" },
+                    pattern: { value: /^\w+$/, message: "Username can only contain letters, numbers, and underscores" }
                 })} />
                 <TextInput label="Password" type="password" error={errors.password?.message} registration={register("password", {
                     required: { value: true, message: "Password is required" },
                     minLength: { value: 6, message: "Invalid password (must be six or more characters)" }
                 })} />
                 <div>
-                    <input type="submit" value="Login" disabled={Object.keys(errors).length > 0} />{" "}
-                    <ErrorMsg>{loginError}</ErrorMsg>
+                    <input type="submit" value="Sign Up" disabled={Object.keys(errors).length > 0} />{" "}
+                    <ErrorMsg>{signupError}</ErrorMsg>
                 </div>
             </form>
-            <p>No account yet? <LinkButton onClick={showSignup}>Create one</LinkButton></p>
+            <p>Already have an account? <LinkButton onClick={showLogin}>Log in</LinkButton></p>
         </Modal>
     );
 };
