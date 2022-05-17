@@ -13,9 +13,9 @@ const AuthManager = () => {
 
     const tryLogin = async () => {
         await new Promise(r => setTimeout(r, 100));
-        console.log("calling loginWithToken");
         const result = await loginWithToken();
         if (result?.user) setUser(result.user);
+        else if (!result || result.error) localStorage.setItem(AUTH_TOKEN_KEY, "");
     };
 
     useEffect(() => {

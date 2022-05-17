@@ -15,10 +15,10 @@ const request = async (method, endpoint, headers, body) => {
     });
     try {
         const json = await res.json();
-        if (!res.ok) return { error: json.message };
+        if (!res.ok) return { error: json.message || "Network request failed - unknown error" };
         return json;
     } catch (e) {
-        console.error(e);
+        console.log(e);
         return { error: "An unknown error occurred" };
     }
 };
