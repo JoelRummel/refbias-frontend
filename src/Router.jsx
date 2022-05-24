@@ -1,6 +1,7 @@
 import { Outlet, Route, Routes } from "react-router-dom";
 import { SiteHeader } from "./components";
 import { Root } from "./routes";
+import Game from "./routes/Game";
 import Games from "./routes/Games";
 
 const Body = () => (
@@ -18,8 +19,7 @@ const Router = () => {
                 <Route index element={<Root />} />
                 <Route path="game">
                     <Route path=":gameId">
-                        <Route index element={<p>Viewing game info</p>} />
-                        <Route path="vote" element={<p>Voting on game</p>} />
+                        <Route index element={<Game />} />
                     </Route>
                 </Route>
                 <Route path="games" element={<Games />} />

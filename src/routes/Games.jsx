@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { teamsMap } from '../config/teams';
 import useGamesApiRequest from '../hooks/useApiRequest/useGamesApiRequest';
 import { readableDateDiff } from '../util/dates';
+import { gameToQueryString } from '../util/gameQueryString';
 
 const GameCard = styled.div`
     border: 2px solid black;
@@ -12,7 +13,9 @@ const GameCard = styled.div`
     border-radius: 5px;
 `;
 
-const Game = ({ game: { id, away, home, status, voteOpenTime, voteCloseTime } }) => {
+const Game = ({ game }) => {
+    const { id, away, home, status, voteOpenTime, voteCloseTime } = game;
+
     const awayInfo = teamsMap[away];
     const homeInfo = teamsMap[home];
 
@@ -22,14 +25,14 @@ const Game = ({ game: { id, away, home, status, voteOpenTime, voteCloseTime } })
     if (status === 'upcoming') statusText = `Closed - voting starts in ${readableDateDiff(now, voteOpenTime)}`;
 
     return (
-        <Link to={'/game/' + id}>
+        <Link to={`/game/${id}?${gameToQueryString(game)}`}>
             <GameCard>
                 <p>{awayInfo.mascot} at {homeInfo.mascot}</p>
                 <p>Voting status: {statusText}</p>
             </GameCard>
         </Link>
     );
-}
+};
 
 const Games = () => {
     const [games, setGames] = useState(null);
@@ -54,6 +57,6 @@ const Games = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Games;
