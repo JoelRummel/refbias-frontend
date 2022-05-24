@@ -1,5 +1,5 @@
 const dev = {
-    apiBaseUrl: 'https://ts9fpl29zd.execute-api.us-east-1.amazonaws.com/dev'
+    apiBaseUrl: 'https://1hbrnkz65g.execute-api.us-east-1.amazonaws.com/dev'
 };
 
 const qa = {
