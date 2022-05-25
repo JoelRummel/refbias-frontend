@@ -1,9 +1,9 @@
-import AuthManager from "./AuthManager";
+import AuthManager from "./root/AuthManager";
 import { SignupModal, LoginModal } from "./components";
 import PickTeamsModal from "./components/modals/PickTeamsModal";
-import ContextProviders from "./ContextProviders";
-import ModalManager from "./ModalManager";
-import Router from "./Router";
+import ContextProviders from "./root/ContextProviders";
+import ModalManager from "./root/ModalManager";
+import Router from "./root/Router";
 
 const App = () => {
     return (

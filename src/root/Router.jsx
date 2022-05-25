@@ -1,8 +1,8 @@
 import { Outlet, Route, Routes } from "react-router-dom";
-import { SiteHeader } from "./components";
-import { Root } from "./routes";
-import Game from "./routes/Game";
-import Games from "./routes/Games";
+import { SiteHeader } from "../components";
+import { Root } from "../routes";
+import Game from "../routes/Game";
+import Games from "../routes/Games";
 
 const Body = () => (
     <div>

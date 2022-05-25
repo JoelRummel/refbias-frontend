@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
-import AuthContext from "./contexts/AuthContext";
-import UserContext from "./contexts/UserContext";
-import useAuthApiRequest from "./hooks/useApiRequest/useAuthApiRequest";
+import AuthContext from "../contexts/AuthContext";
+import UserContext from "../contexts/UserContext";
+import useAuthApiRequest from "../hooks/useApiRequest/useAuthApiRequest";
 
 const AUTH_TOKEN_KEY = "AUTH_TOKEN_KEY";
 

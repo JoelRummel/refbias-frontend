@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
-import ModalContext from "./contexts/ModalContext";
-import UserContext from "./contexts/UserContext";
+import ModalContext from "../contexts/ModalContext";
+import UserContext from "../contexts/UserContext";
 
 const ModalManager = () => {
     const { user } = useContext(UserContext);
