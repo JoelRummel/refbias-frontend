@@ -6,7 +6,7 @@ import UserContext from "./contexts/UserContext";
 const ContextProviders = ({ children }) => {
     const [user, setUser] = useState(null);
     const [authToken, setAuthToken] = useState("");
-    const [openModal, setOpenModal] = useState("login");
+    const [openModal, setOpenModal] = useState("");
 
     return (
         <AuthContext.Provider value={{ authToken, setAuthToken }}>
