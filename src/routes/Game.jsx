@@ -1,11 +1,27 @@
+import { useContext, useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+import UserContext from "../contexts/UserContext";
+import useGameApiRequest from "../hooks/useApiRequest/useGameApiRequest";
+import VotePage from "../pages/game/VotePage";
 import { queryStringToGame } from "../util/gameQueryString";
 
 const Game = () => {
     const { gameId } = useParams();
     const [queryParams] = useSearchParams();
+    const [game, setGame] = useState({ ...queryStringToGame(queryParams), id: gameId });
+    const { getGame } = useGameApiRequest();
+    const { user } = useContext(UserContext);
 
-    const game = queryStringToGame(queryParams);
+    const userHasVoted = user?.gamesVotedOn?.includes(gameId);
+
+    const fetchGame = async () => {
+        const res = await getGame(gameId);
+        setGame(res.game);
+    };
+
+    useEffect(() => {
+        fetchGame();
+    }, []);
 
     if (!gameId) return (
         <p>404 Not Found. No game ID supplied.</p>
@@ -18,7 +34,11 @@ const Game = () => {
         <p>Voting for this game has closed. Results are below:</p>
     );
     if (game.status === 'voting') return (
-        <p>Voting for this game has begun, take a look below:</p>
+        !userHasVoted ? (
+            <VotePage game={game} />
+        ) : (
+            <p>You have already voted on this game!</p>
+        )
     );
     return (
         <p>Error: Unknown game status {game.status}</p>

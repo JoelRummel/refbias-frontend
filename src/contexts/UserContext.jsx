@@ -7,7 +7,8 @@ const UserContext = createContext({
         emailVerified: false,
         xp: 0,
         favoriteTeams: [],
-        hatedTeams: []
+        hatedTeams: [],
+        gamesVotedOn: []
     },
     setUser: () => { }
 });
