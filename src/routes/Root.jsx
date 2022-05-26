@@ -14,7 +14,9 @@ export const Root = () => {
                 <p>You're not logged in wtf?!</p>
             )}
             <p>Here is an example RefTriangle:</p>
-            <RefTriangle qualityScore={1.7} biasScore={0.2} />
+            <div>
+                <RefTriangle qualityScore={0.2} biasScore={1.5} size={300} away="DET" home="GB" />
+            </div>
         </>
     );
 };
