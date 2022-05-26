@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import RefTriangle from "../components/RefTriangle";
 import UserContext from "../contexts/UserContext";
 
 export const Root = () => {
@@ -12,6 +13,8 @@ export const Root = () => {
             ) : (
                 <p>You're not logged in wtf?!</p>
             )}
+            <p>Here is an example RefTriangle:</p>
+            <RefTriangle qualityScore={1.7} biasScore={0.2} />
         </>
     );
 };

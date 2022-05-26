@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="200" height="200" viewBox="0 0 200 200" xml:space="preserve">
+<g transform="matrix(2.44 0 0 2.43 99.75 100)" id="_5f709dgyh2d5UmnmgKy9"  >
+<linearGradient id="SVGID_417" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)"  x1="40.214808606584334" y1="0.532684921066398" x2="39.44582591994237" y2="80.3179037659796">
+<stop offset="0%" style="stop-color:#35ED35;stop-opacity: 0.7411764705882353"/>
+<stop offset="50%" style="stop-color:#7e7e7e;stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:#F72F3A;stop-opacity: 0.7411764705882353"/>
+</linearGradient>
+<path style="stroke: rgb(0,0,0); stroke-width: 7; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_417); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-40, -40)" d="M 60 40 L 80 80 L 40 80 L 0 80 L 20 40 L 40 0 L 60 40 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(0.95 0 0 0.95 99.75 100)" id="xR1dOYQIf7gwoUvRgJW6h"  >
+<path style="stroke: rgb(0,0,0); stroke-opacity: 0.53; stroke-width: 7; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-opacity: 0; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M 0 -99.66171 L 0 99.6617" stroke-linecap="round" />
+</g>
+</svg>
