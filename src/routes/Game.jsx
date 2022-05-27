@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 import useGameApiRequest from "../hooks/useApiRequest/useGameApiRequest";
+import ResultsPage from "../pages/game/ResultsPage";
 import VotePage from "../pages/game/VotePage";
 import { queryStringToGame } from "../util/gameQueryString";
 
@@ -28,15 +29,17 @@ const Game = () => {
     );
 
     if (game.status === 'upcoming') return (
+        // User really shouldn't even be allowed to get this far
         <p>Voting is not yet open for this game. Come back later.</p>
     );
     if (game.status === 'closed') return (
-        <p>Voting for this game has closed. Results are below:</p>
+        <ResultsPage home={game.home} away={game.away} results={game.results} />
     );
     if (game.status === 'voting') return (
         !userHasVoted ? (
             <VotePage game={game} />
         ) : (
+            // Again, user shouldn't be allowed to get this far
             <p>You have already voted on this game!</p>
         )
     );
