@@ -8,6 +8,7 @@ const ModalBackground = styled.div`
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.55);
+    z-index: 1;
 `;
 
 const ModalContainer = styled.div`
@@ -21,6 +22,7 @@ const ModalContainer = styled.div`
     background-color: white;
     border-radius: 10px;
     padding: 0px 15px 15px 15px;
+    z-index: 2;
 `;
 
 const Title = styled.h2`
