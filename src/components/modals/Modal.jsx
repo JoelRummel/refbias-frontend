@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ModalBackground = styled.div`
     display: ${({ open }) => open ? 'initial' : 'none'};
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     right: 0;
@@ -15,7 +15,7 @@ const ModalContainer = styled.div`
     display: ${({ open }) => open ? 'initial' : 'none'};
     width: 90%;
     max-width: ${({ maxWidth }) => maxWidth};
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
