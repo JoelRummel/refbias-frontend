@@ -33,7 +33,7 @@ const Game = () => {
         <p>Voting is not yet open for this game. Come back later.</p>
     );
     if (game.status === 'closed') return (
-        <ResultsPage home={game.home} away={game.away} results={game.results} />
+        <ResultsPage gameId={gameId} home={game.home} away={game.away} results={game.results} />
     );
     if (game.status === 'voting') return (
         !userHasVoted ? (

@@ -8,9 +8,12 @@ const useGameApiRequest = () => {
     const castVote = (id, { quality, bias = 0, comments = '' }) =>
         post(`/game/${id}/vote`, { quality: parseInt(quality), bias: parseInt(bias), comments });
 
+    const getComments = (id) => get(`/game/${id}/comments`);
+
     return {
         getGame,
-        castVote
+        castVote,
+        getComments
     };
 };
 
