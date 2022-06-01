@@ -3,26 +3,48 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ModalContext from "../contexts/ModalContext";
 import UserContext from "../contexts/UserContext";
+import Referee from "../resources/referee.png";
 
 const Navbar = styled.div`
     margin-bottom: 10px;
-    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(40,40,40);
+    padding: 0px 20px;
 `;
 
 const LinkRibbon = styled.div`
-    display: flex;
+    display: inline-flex;
 `;
 
 const LinkWrapper = styled.div`
     padding: 5px;
     margin: 5px;
-    border: 1px solid black;
-    border-radius: 3px;
 `;
 
-const Title = styled.h2`
-    text-align: center;
-    margin-bottom: 10px;
+const StyledLink = styled(Link)`
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+`;
+
+const LogoContainer = styled.div`
+    display: inline-flex;
+    align-items: center;
+`;
+
+const LogoIcon = styled.img`
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    -webkit-filter: invert(100%); /* Safari/Chrome */
+    filter: invert(100%);
+`;
+
+const Title = styled.h1`
+    display: inline;
+    color: white;
 `;
 
 export const SiteHeader = () => {
@@ -37,23 +59,33 @@ export const SiteHeader = () => {
 
     return (
         <Navbar>
-            <Title>Refbias</Title>
+            <Link to="/">
+                <LogoContainer>
+                    <LogoIcon src={Referee} alt="Refbias Logo" />
+                    <Title>RefBias</Title>
+                </LogoContainer>
+            </Link>
             <LinkRibbon>
-                <Link to="/">
+                <StyledLink to="/">
                     <LinkWrapper>
-                        Home
+                        News
                     </LinkWrapper>
-                </Link>
-                <Link to="/games">
+                </StyledLink>
+                <StyledLink to="/games">
                     <LinkWrapper>
                         Games
                     </LinkWrapper>
-                </Link>
-                <a href="#" onClick={handleLoginClick}>
+                </StyledLink>
+                <StyledLink to="/">
+                    <LinkWrapper>
+                        FAQ
+                    </LinkWrapper>
+                </StyledLink>
+                <StyledLink to="#" onClick={handleLoginClick}>
                     <LinkWrapper>
                         {user ? `Logged in as ${user.username}` : 'Login'}
                     </LinkWrapper>
-                </a>
+                </StyledLink>
             </LinkRibbon>
         </Navbar>
     );
