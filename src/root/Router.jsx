@@ -1,5 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom";
 import { SiteHeader } from "../components";
+import Paper from "../components/common/Paper";
 import { Root } from "../routes";
 import Game from "../routes/Game";
 import Games from "../routes/Games";
@@ -10,10 +11,10 @@ const Footer = () => (
             This content is not endorsed by, supported by, or otherwise affiliated with the NFL.
         </p>
     </div>
-)
+);
 
 const Body = () => (
-    <div>
+    <div style={{ backgroundColor: '#edeef0' }}>
         <SiteHeader />
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{ flexGrow: 1, maxWidth: 1600, display: 'flex', flexWrap: 'wrap' }}>
@@ -21,18 +22,18 @@ const Body = () => (
                     <Outlet />
                 </div>
                 <div style={{ flexGrow: 1, minWidth: 200, maxWidth: 300, paddingRight: 20, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-                    <div style={{ border: '2px solid black', marginBottom: 20 }}>
+                    <Paper style={{ marginBottom: 20 }} pad>
                         <h4>Cast your vote:</h4>
                         <p>Game one</p>
                         <p>Game two</p>
                         <p>Game three</p>
-                    </div>
-                    <div style={{ border: '2px solid black' }}>
+                    </Paper>
+                    <Paper pad>
                         <h4>Latest News</h4>
                         <p>Story one</p>
                         <p>Story two</p>
                         <p>Story three</p>
-                    </div>
+                    </Paper>
                 </div>
             </div>
         </div>

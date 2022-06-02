@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
+import Paper from "../components/common/Paper";
 import teamLogos from "../config/teamLogos";
 import { teamsMap } from "../config/teams";
 import UserContext from "../contexts/UserContext";
@@ -12,7 +13,6 @@ import { queryStringToGame } from "../util/gameQueryString";
 const HeaderContainer = styled.div`
     display: flex;
     margin-bottom: 40px;
-    margin-top: -10px;
     align-items: center;
 `;
 
@@ -33,7 +33,7 @@ const Gradient = styled.div`
     right: ${({ side }) => side === 'away' ? '-40px' : 0};
     top: 0;
     bottom: -40px;
-    z-index: -1;
+    border-radius: 10px;
     background: ${({ color }) => color};
     background: linear-gradient(to bottom ${({ side }) => side === 'away' ? 'right' : 'left'}, ${({ color }) => color} 0%, ${({ color }) => color}50 35%, rgba(0,0,0,0) 50%);
 `;
@@ -43,14 +43,14 @@ const GameHeader = ({ away, home }) => {
         <HeaderContainer>
             <SideContainer>
                 <Gradient side="away" color={teamsMap[away].colors.primary} />
-                <img src={teamLogos[away]} style={{ width: 100, height: 100, marginLeft: 30, marginTop: 10 }} />
+                <img src={teamLogos[away]} style={{ width: 100, height: 100, marginLeft: 30, marginTop: 10, zIndex: 1 }} />
             </SideContainer>
             <HeaderText>
                 {teamsMap[away].location} {teamsMap[away].mascot} vs. {teamsMap[home].location} {teamsMap[home].mascot}
             </HeaderText>
             <SideContainer style={{ justifyContent: 'flex-end' }}>
                 <Gradient side="home" color={teamsMap[home].colors.primary} />
-                <img src={teamLogos[home]} style={{ width: 100, height: 100, marginRight: 30, marginTop: 10 }} />
+                <img src={teamLogos[home]} style={{ width: 100, height: 100, marginRight: 30, marginTop: 10, zIndex: 1 }} />
             </SideContainer>
         </HeaderContainer>
     );
@@ -100,10 +100,10 @@ const Game = () => {
     }
 
     return (
-        <div>
+        <Paper>
             <GameHeader away={game.away} home={game.home} />
             <GameDisplay />
-        </div>
+        </Paper>
     )
 };
 

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Paper from '../components/common/Paper';
 import teamLogos from '../config/teamLogos';
 import { teamsMap } from '../config/teams';
 import useGamesApiRequest from '../hooks/useApiRequest/useGamesApiRequest';
 import { readableDateDiff } from '../util/dates';
 import { gameToQueryString } from '../util/gameQueryString';
 
-const GameCard = styled.div`
-    border: 2px solid gray;
+const GameCard = styled(Paper)`
     margin: 10px;
-    border-radius: 5px;
     display: flex;
     align-items: center;
     min-height: 100px;
@@ -30,13 +29,14 @@ const Gradient = styled.div`
     right: ${({ side }) => side === 'away' ? '-20px' : 0};
     top: 0;
     bottom: 0;
-    z-index: -1;
+    border-radius: 10px;
     background: linear-gradient(to ${({ side }) => side === 'away' ? 'right' : 'left'}, ${({ color }) => color} 0%, ${({ color }) => color}50 50%, rgba(0,0,0,0) 100%);
 `;
 
 const TeamLogo = styled.img`
     width: 75px;
     height: 75px;
+    z-index: 1;
 `;
 
 const Game = ({ game }) => {

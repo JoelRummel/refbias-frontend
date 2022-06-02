@@ -6,7 +6,7 @@ import UserContext from "../contexts/UserContext";
 import Referee from "../resources/referee.png";
 
 const Navbar = styled.div`
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
