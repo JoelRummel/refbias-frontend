@@ -10,7 +10,7 @@ const Navbar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(40,40,40);
+    background-color: rgb(50,50,50);
     padding: 0px 20px;
 `;
 
