@@ -7,11 +7,6 @@ import UserContext from "../../contexts/UserContext";
 import useCommentApiRequest from "../../hooks/useApiRequest/useCommentApiRequest";
 import useGameApiRequest from "../../hooks/useApiRequest/useGameApiRequest";
 
-const PageHeader = styled.h2`
-    text-align: center;
-    margin-bottom: 40px;
-`;
-
 const BreakdownHeader = styled.h2`
     text-align: center;
     margin-top: 60px;
@@ -113,9 +108,6 @@ const ResultsPage = ({ gameId, home, away, results }) => {
 
     if (!results) return (
         <div>
-            <PageHeader>
-                {teamsMap[away].location} {teamsMap[away].mascot} vs. {teamsMap[home].location} {teamsMap[home].mascot}
-            </PageHeader>
             <h4>LOADING...</h4>
         </div>
     );
@@ -123,9 +115,6 @@ const ResultsPage = ({ gameId, home, away, results }) => {
     const { home: homeScores, away: awayScores, neutral: neutralScores, total } = results;
     return (
         <div>
-            <PageHeader>
-                {teamsMap[away].location} {teamsMap[away].mascot} vs. {teamsMap[home].location} {teamsMap[home].mascot}
-            </PageHeader>
             <RefTriangle qualityScore={total.qualityScore} biasScore={total.biasScore} home={home} away={away} size={300} />
             <BreakdownHeader>FANDOM BREAKDOWN</BreakdownHeader>
             <BreakdownContainer>
