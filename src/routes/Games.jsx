@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Paper from '../components/common/Paper';
+import { Paper } from '../components/common';
 import teamLogos from '../config/teamLogos';
 import { teamsMap } from '../config/teams';
 import useGamesApiRequest from '../hooks/useApiRequest/useGamesApiRequest';
@@ -30,7 +30,7 @@ const Gradient = styled.div`
     top: 0;
     bottom: 0;
     border-radius: 10px;
-    background: linear-gradient(to ${({ side }) => side === 'away' ? 'right' : 'left'}, ${({ color }) => color} 0%, ${({ color }) => color}50 50%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to ${({ side }) => side === 'away' ? 'right' : 'left'}, ${({ color }) => color}70 0%, rgba(0,0,0,0) 50%);
 `;
 
 const TeamLogo = styled.img`

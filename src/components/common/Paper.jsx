@@ -9,12 +9,10 @@ const PaperDiv = styled.div`
 	-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
-const Paper = ({ children, className, style, pad }) => {
+export const Paper = ({ children, className, style, pad }) => {
     return (
         <PaperDiv className={className} style={style} pad={pad}>
             {children}
         </PaperDiv>
     );
 };
-
-export default Paper;

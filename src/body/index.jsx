@@ -21,8 +21,8 @@ const ContentSidebarStacker = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-    flex-grow: 1;
-    min-width: 500px;
+    flex-grow: 4;
+    flex-basis: 600px;
     padding: 0px 20px;
 `;
 

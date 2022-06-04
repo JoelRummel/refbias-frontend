@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-import Paper from "../components/common/Paper";
+import { Paper } from "../components/common";
 import teamLogos from "../config/teamLogos";
 import { teamsMap } from "../config/teams";
 import UserContext from "../contexts/UserContext";
@@ -34,7 +34,6 @@ const Gradient = styled.div`
     top: 0;
     bottom: -40px;
     border-radius: 10px;
-    background: ${({ color }) => color};
     background: linear-gradient(to bottom ${({ side }) => side === 'away' ? 'right' : 'left'}, ${({ color }) => color} 0%, ${({ color }) => color}50 35%, rgba(0,0,0,0) 50%);
 `;
 
