@@ -11,6 +11,7 @@ const BodyRoot = styled.div`
 const BodyCenterer = styled.div`
     display: flex;
     justify-content: center;
+    padding: 10px;
 `;
 
 const ContentSidebarStacker = styled.div`
@@ -23,7 +24,7 @@ const ContentSidebarStacker = styled.div`
 const ContentWrapper = styled.div`
     flex-grow: 4;
     flex-basis: 600px;
-    padding: 0px 20px;
+    padding: 10px;
 `;
 
 const Body = () => (

@@ -9,12 +9,10 @@ const SidebarContainer = styled.div`
     flex-shrink: 1;
     flex-basis: 300px;
     min-width: 250px;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding: 10px 10px 0px 10px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin-top: 20px;
 `;
 
 const Sidebar = () => {
