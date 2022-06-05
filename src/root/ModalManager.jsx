@@ -18,10 +18,10 @@ const ModalManager = () => {
         }
     }, [user, openModal, setOpenModal]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (openModal) document.body.style.overflow = 'hidden';
         else document.body.style.overflow = 'unset';
-    }, [openModal]);
+    }, [openModal]);*/
 
     return null;
 };
