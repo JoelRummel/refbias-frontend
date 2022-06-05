@@ -15,6 +15,36 @@ const SidebarContainer = styled.div`
     align-items: stretch;
 `;
 
+const LatestNewsHeader = styled.h4`
+    margin-top: 5px;
+    margin-bottom: 10px;
+`;
+
+const NewsItem = styled.div`
+    border-top: 1px solid #bbb;
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex; 
+`;
+
+const NewsThumbnail = styled.img`
+    border-radius: 10px;
+    object-fit: cover;
+    width: 75px;
+    height: 75px;
+    margin-right: 5px;
+`;
+
+const NewsHeader = styled.h5`
+    margin: 0px 0px 1px 0px;
+`;
+
+const NewsSubheader = styled.p`
+    font-size: 12px;
+    color: gray;
+    margin: 0px;
+`;
+
 const Sidebar = () => {
     const { getLatestNews } = useNewsApiRequest();
     const { news, setNews } = useContext(NewsContext);
@@ -34,18 +64,18 @@ const Sidebar = () => {
     return (
         <SidebarContainer>
             <Paper pad style={{ marginBottom: 20 }}>
-                <h4 style={{ marginBottom: 10, marginTop: 5 }}>Latest News</h4>
+                <LatestNewsHeader>Latest News</LatestNewsHeader>
                 {news.latest.map(article => (
-                    <div style={{ borderTop: '1px solid #bbb', paddingTop: 10, marginTop: 10, display: 'flex' }}>
-                        <img src={article.headerImage} style={{ borderRadius: 10, objectFit: 'cover', width: 75, height: 75, marginRight: 5 }} />
+                    <NewsItem key={article.id}>
+                        <NewsThumbnail src={article.headerImage} />
                         <div>
-                            <h5 style={{ margin: 0, marginBottom: 1 }}>{article.headline}</h5>
-                            <p style={{ fontSize: 12, color: 'gray', margin: 0 }}>{article.subheader}</p>
+                            <NewsHeader>{article.headline}</NewsHeader>
+                            <NewsSubheader>{article.subheader}</NewsSubheader>
                         </div>
-                    </div>
+                    </NewsItem>
                 ))}
             </Paper>
-            <Paper style={{}} pad>
+            <Paper pad>
                 <h4>Cast your vote:</h4>
                 <p>Game one</p>
                 <p>Game two</p>
