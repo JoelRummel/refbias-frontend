@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { BiUserCircle } from "react-icons/bi";
 import ModalContext from "../contexts/ModalContext";
 import UserContext from "../contexts/UserContext";
 import Referee from "../resources/referee.png";
@@ -16,17 +17,21 @@ const Navbar = styled.div`
 
 const LinkRibbon = styled.div`
     display: inline-flex;
+    align-self: stretch;
+    align-items: stretch;
 `;
 
 const LinkWrapper = styled.div`
-    padding: 5px;
-    margin: 5px;
+    margin: 0px 10px;
 `;
 
 const StyledLink = styled(Link)`
     margin-left: 15px;
     color: white;
     text-decoration: none;
+    box-shadow: 0 ${({ selected }) => selected ? -3 : 0}px 0 #189dff inset;
+    display: flex;
+    align-items: center;
 `;
 
 const LogoContainer = styled.div`
@@ -50,6 +55,7 @@ const Title = styled.h1`
 export const SiteHeader = () => {
     const { user } = useContext(UserContext);
     const { setOpenModal } = useContext(ModalContext);
+    const { pathname } = useLocation();
 
     const handleLoginClick = () => {
         if (!user) {
@@ -71,7 +77,7 @@ export const SiteHeader = () => {
                         News
                     </LinkWrapper>
                 </StyledLink>
-                <StyledLink to="/games">
+                <StyledLink to="/games" selected={pathname.startsWith("/games")}>
                     <LinkWrapper>
                         Games
                     </LinkWrapper>
@@ -81,11 +87,12 @@ export const SiteHeader = () => {
                         FAQ
                     </LinkWrapper>
                 </StyledLink>
-                <StyledLink to="#" onClick={handleLoginClick}>
-                    <LinkWrapper>
-                        {user ? `Logged in as ${user.username}` : 'Login'}
-                    </LinkWrapper>
-                </StyledLink>
+                <button style={{ marginLeft: 15, alignSelf: 'center', display: 'inline-flex', alignItems: 'center', padding: '2px 5px', cursor: 'pointer' }} onClick={handleLoginClick}>
+                    <BiUserCircle size={24} />
+                    <span style={{ marginLeft: 3 }}>
+                        {user ? user.username : 'Login/Register'}
+                    </span>
+                </button>
             </LinkRibbon>
         </Navbar>
     );
